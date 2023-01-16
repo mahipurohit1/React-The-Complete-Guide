@@ -8,10 +8,10 @@ function App() {
     setUserList((prevState) => [data, ...prevState]);
   };
   return (
-    <div>
+    <React.Fragment>
       <AddUser onAddUserData={userData} />
       <UserList userData={userList} />
-    </div>
+    </React.Fragment>
   );
 }
 
