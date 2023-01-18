@@ -4,7 +4,8 @@ const DataContext = React.createContext({
   addItem: () => {},
   HideModalHandler: () => {},
   deleteitem: () => {},
-  ShowModalHandlerWithData: () => {},
+  ShowUpdateModalHandler: () => {},
+  HideUpdateModalHandler: () => {},
 });
 
 export default DataContext;

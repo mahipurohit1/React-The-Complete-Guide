@@ -13,7 +13,7 @@ function Task() {
           <div>
             <button
               className={style.btn}
-              onClick={() => data.ShowModalHandlerWithData(ele.id)}
+              onClick={() => data.ShowUpdateModalHandler(ele)}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
