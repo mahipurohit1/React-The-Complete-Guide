@@ -17,6 +17,13 @@ function App() {
   const ShowModalHandler = () => {
     setShowModal(true);
   };
+  const ShowModalHandlerWithData = (id) => {
+    const selectedData = items.filter((item) => {
+      return item.id === id;
+    });
+
+    setShowModal(true);
+  };
   const HideModalHandler = () => {
     setShowModal(false);
   };
@@ -24,12 +31,28 @@ function App() {
     setItems([newItem, ...items]);
     localStorage.setItem("items", JSON.stringify([newItem, ...items]));
   };
+
+  const deleteitem = (id) => {
+    setItems(items.filter((item) => item.id !== id));
+    localStorage.setItem(
+      "items",
+      JSON.stringify(items.filter((item) => item.id !== id))
+    );
+  };
   // useEffect(() => {
   //   localStorage.setItem("item", JSON.stringify(items));
   // }, [items]);
 
   return (
-    <DataContext.Provider value={{ items, addItem, HideModalHandler }}>
+    <DataContext.Provider
+      value={{
+        items,
+        addItem,
+        HideModalHandler,
+        deleteitem,
+        ShowModalHandlerWithData,
+      }}
+    >
       {showModal && <Modal onHideModal={HideModalHandler} />}
       <Container>
         <h1 className={styles.header}>Todo List</h1>

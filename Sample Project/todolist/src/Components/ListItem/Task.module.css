@@ -12,4 +12,17 @@
   border-radius: 10px;
   background-color: rgba(51, 51, 51, 0.043);
   padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.icon {
+  height: 24px;
+  width: 24px;
+  margin-right: 10px;
+}
+.btn {
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
