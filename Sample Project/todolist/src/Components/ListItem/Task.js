@@ -9,7 +9,9 @@ function Task() {
     <ul className={style["list-ul"]}>
       {data.items.map((ele) => (
         <li className={style["list-li"]} key={ele.id}>
-          {ele.name}
+          <div className={ele.status === "complete" ? style["complete"] : " "}>
+            {ele.name}
+          </div>
           <div>
             <button
               className={style.btn}
@@ -32,7 +34,7 @@ function Task() {
             </button>
             <button
               className={style.btn}
-              onClick={() => data.deleteitem(ele.id)}
+              onClick={() => data.deleteItem(ele.id)}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

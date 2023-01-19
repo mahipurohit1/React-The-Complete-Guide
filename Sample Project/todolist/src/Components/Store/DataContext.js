@@ -3,7 +3,7 @@ const DataContext = React.createContext({
   items: [],
   addItem: () => {},
   HideModalHandler: () => {},
-  deleteitem: () => {},
+  deleteItem: () => {},
   ShowUpdateModalHandler: () => {},
   HideUpdateModalHandler: () => {},
 });
