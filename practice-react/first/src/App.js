@@ -1,5 +1,8 @@
+import { useState } from "react";
 import "./App.css";
+import NewSubscription from "./component/NewSubscription/NewSubscription";
 import Subscription from "./component/Subscription/Subscription";
+import EditContext from "./component/store/Edit-context";
 
 const DUMMY_DATA = [
   {
@@ -22,11 +25,26 @@ const DUMMY_DATA = [
   },
 ];
 function App() {
+  const [isEditable, setIsEditable] = useState(false);
+  const [items, setItems] = useState(DUMMY_DATA);
+  const editHandler = () => {
+    setIsEditable(true);
+  };
+
+  const onSaveHandler = (data) => {
+    setItems((prevState) => {
+      return [...prevState, data];
+    });
+  };
   return (
     <div>
-      <Subscription data={DUMMY_DATA[0]} />
-      <Subscription data={DUMMY_DATA[1]} />
-      <Subscription data={DUMMY_DATA[2]} />
+      <EditContext.Provider value={{ editHandler, isEditable }}>
+        <NewSubscription onSave={onSaveHandler} />
+
+        {items.map((item) => {
+          return <Subscription data={item} />;
+        })}
+      </EditContext.Provider>
     </div>
   );
 }
