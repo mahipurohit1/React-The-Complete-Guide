@@ -46,6 +46,7 @@ export const sendData = function (cart) {
       }
 
       const data = await response.json();
+      console.log(data);
       dispatch(
         notification({
           status: "success",
