@@ -1,7 +1,14 @@
 import React from "react";
+import { useLoaderData } from "react-router-dom";
+import EventForm from "../components/EventForm";
 
 function EditEventPage() {
-  return <div>EditEventPage</div>;
+  const data = useLoaderData();
+  return (
+    <div>
+      <EventForm event={data.event}></EventForm>
+    </div>
+  );
 }
 
 export default EditEventPage;

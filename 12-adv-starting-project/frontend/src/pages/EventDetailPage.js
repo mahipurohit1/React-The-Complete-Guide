@@ -1,19 +1,27 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { json, useLoaderData } from "react-router-dom";
+import EventItem from "../components/EventItem";
 
 function EventDetailPage() {
-  const param = useParams();
-  const navigate = useNavigate();
-  const editEventHandler = () => {
-    navigate("edit");
-  };
+  const data = useLoaderData();
+
   return (
     <div>
-      EventDetailPage
-      <h1>{param.id}</h1>
-      <button onClick={editEventHandler}> edit event</button>
+      <EventItem event={data.event} />
     </div>
   );
 }
 
 export default EventDetailPage;
+
+export async function eventDetailLoader({ request, params }) {
+  const id = params.id;
+  console.log(id);
+  const response = await fetch("http://localhost:8080/events/" + id);
+
+  if (!response.ok) {
+    throw json({ message: "error is occurred " }, { status: 500 });
+  } else {
+    return response;
+  }
+}
