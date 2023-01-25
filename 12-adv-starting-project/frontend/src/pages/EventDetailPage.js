@@ -1,5 +1,5 @@
 import React from "react";
-import { json, useLoaderData } from "react-router-dom";
+import { json, redirect, useLoaderData } from "react-router-dom";
 import EventItem from "../components/EventItem";
 
 function EventDetailPage() {
@@ -23,5 +23,18 @@ export async function eventDetailLoader({ request, params }) {
     throw json({ message: "error is occurred " }, { status: 500 });
   } else {
     return response;
+  }
+}
+
+export async function eventDeleteAction({ request, params }) {
+  const id = params.id;
+  const response = await fetch("http://localhost:8080/events/" + id, {
+    method: request.method,
+  });
+
+  if (!response.ok) {
+    throw json({ message: "data delete failed" }, { status: 500 });
+  } else {
+    return redirect("/events");
   }
 }

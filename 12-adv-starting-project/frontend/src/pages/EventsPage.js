@@ -1,17 +1,32 @@
 import React from "react";
-import { useLoaderData, json } from "react-router-dom";
+import { useLoaderData, json, useNavigate } from "react-router-dom";
 import EventsList from "../components/EventsList";
 
 function EventsPage() {
   const data = useLoaderData();
-
+  const navigate = useNavigate();
   // if (data.isError) {
   //   return <p> {data.message}</p>;
   // }
+  const addNewEventHandler = () => {
+    navigate("new");
+  };
 
   return (
     <>
-      <EventsList events={data.events} />
+      <button
+        style={{
+          padding: "10px",
+          margin: "5px",
+          cursor: "pointer",
+        }}
+        onClick={addNewEventHandler}
+      >
+        Add New Event
+      </button>
+      <div>
+        <EventsList events={data.events} />
+      </div>
     </>
   );
 }
