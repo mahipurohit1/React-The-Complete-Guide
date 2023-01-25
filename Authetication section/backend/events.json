@@ -1,12 +1,1 @@
-{
-  "events": [
-    {
-      "title": "A new event",
-      "image": "https://cdn.muenchen-p.de/fl_progressive,q_65/.imaging/stk/responsive/teaser300/dms/va-2016/muenchner-christkindlmarkt/christkindlmarkt-marienplat-logo-hp/document/christkindlmarkt-marienplat-logo-hp.jpg",
-      "date": "2022-10-01",
-      "description": "Some awesome event!",
-      "id": "2a42fcc4-ea21-4bdd-abf6-c40006dc66a9"
-    }
-  ],
-  "users": []
-}
+{"events":[{"title":"aaaaaxssss","image":"https://images.unsplash.com/photo-1594007654729-407eedc4be65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60","date":"2023-01-05","description":"aaaaaa","id":"a0f2c929-44d5-417e-ae46-8493eafe3884"},{"title":"aaaa","image":"https://images.unsplash.com/photo-1594007654729-407eedc4be65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=428&q=80","date":"2023-01-15","description":"aaaaa","id":"636dceff-4055-4f57-adc8-d73438620ccc"}],"users":[{"email":"mahipal@gamil.com","password":"$2a$12$3yPptIB5JuVM.PruGnJ8he.mzRwky1LHjeZ.QEsENBOPp/lDh8wae","id":"bca6bb30-9c2f-4116-b424-5a5e4de66a62"},{"email":"mahipal2@gamil.com","password":"$2a$12$aquxbwE4pTOZHCiU/aQit.D5I68cLGGUAaTTB6HVDiQkizWdGag4.","id":"c59e4534-8149-45e5-af61-c825cfc4ab45"},{"email":"mahipal3@gamil.com","password":"$2a$12$ZxIprx.qNMeaby.HvrkgxeZKmv8Lha9xEKXYp6.w0j37UsoF4jB0e","id":"ddbefa70-13aa-4f4d-8559-0000ef66f69b"},{"email":"mahipal4@gmail.com","password":"$2a$12$wYSW0arFDgkPPUzrjoe./u.BtMA3DdePEtfq6aN6geRqXHwIelZuG","id":"cf8aa77d-d5a4-4148-a07e-0dcd1c460ca5"}]}

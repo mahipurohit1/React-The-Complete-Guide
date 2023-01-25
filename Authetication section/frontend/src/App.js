@@ -11,15 +11,21 @@ import EventsRootLayout from "./pages/EventsRoot";
 import HomePage from "./pages/Home";
 import NewEventPage from "./pages/NewEvent";
 import RootLayout from "./pages/Root";
-import AuthenticationPage from "./pages/Authentication";
+import AuthenticationPage, {
+  action as authAction,
+} from "./pages/Authentication";
 import { action as manipulateEventAction } from "./components/EventForm";
 import NewsletterPage, { action as newsletterAction } from "./pages/Newsletter";
+import { logoutAction } from "./pages/logout";
+import { checkAuthLoader, tokenLoader } from "./util/AuthToken";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
     errorElement: <ErrorPage />,
+    id: "root",
+    loader: tokenLoader,
     children: [
       { index: true, element: <HomePage /> },
       {
@@ -63,7 +69,11 @@ const router = createBrowserRouter([
       {
         path: "auth",
         element: <AuthenticationPage />,
-        action: newsletterAction,
+        action: authAction,
+      },
+      {
+        path: "logout",
+        action: logoutAction,
       },
     ],
   },
