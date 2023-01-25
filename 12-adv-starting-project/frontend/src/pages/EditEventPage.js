@@ -6,7 +6,7 @@ function EditEventPage() {
   const data = useLoaderData();
   return (
     <div>
-      <EventForm event={data.event}></EventForm>
+      <EventForm method="PATCH" event={data.event}></EventForm>
     </div>
   );
 }

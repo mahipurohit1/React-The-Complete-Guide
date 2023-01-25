@@ -1,15 +1,15 @@
-import { Form, useNavigate } from "react-router-dom";
+import { Form, useNavigate, json, redirect } from "react-router-dom";
 
 import classes from "./EventForm.module.css";
 
 function EventForm({ method, event }) {
   const navigate = useNavigate();
   function cancelHandler() {
-    navigate("..");
+    navigate("/events");
   }
 
   return (
-    <Form method="post" className={classes.form}>
+    <Form method={method} className={classes.form}>
       <p>
         <label htmlFor="title">Title</label>
         <input
@@ -61,3 +61,31 @@ function EventForm({ method, event }) {
 }
 
 export default EventForm;
+
+export async function addEventAction({ request, params }) {
+  const data = await request.formData();
+  const eventData = {
+    title: data.get("title"),
+    image: data.get("image"),
+    date: data.get("date"),
+    description: data.get("description"),
+  };
+
+  const method = request.method;
+  let url = "http://localhost:8080/events";
+  if (method === "PATCH") {
+    const id = params.id;
+    url = "http://localhost:8080/events/" + id;
+  }
+  const response = await fetch(url, {
+    method: method,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(eventData),
+  });
+  if (!response.ok) {
+    throw json({ message: "data no sent!!" }, { status: 500 });
+  }
+  return redirect("/events");
+}
