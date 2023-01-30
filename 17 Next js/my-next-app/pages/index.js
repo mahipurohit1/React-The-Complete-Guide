@@ -1,25 +1,51 @@
 import MeetupList from "@/components/meetups/MeetupList";
+import { MongoClient } from "mongodb";
 import React from "react";
-const DUMMY_LIST = [
-  {
-    id: 1,
-    image:
-      "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    title: "new first meet up",
-    address: "new city light surat",
-    description: "first meet up ",
-  },
-  {
-    id: 2,
-    image:
-      "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    title: "new second meet up",
-    address: "new city light surat",
-    description: "second meet up ",
-  },
-];
-function Homepage() {
-  return <MeetupList meetups={DUMMY_LIST}></MeetupList>;
+import Head from "next/head";
+function Homepage(props) {
+  return (
+    <>
+      <Head>
+        <title>React MeetUp</title>
+        <meta name="description" content="browse a new react meet up ..." />
+      </Head>
+      <MeetupList meetups={props.meetup}></MeetupList>;
+    </>
+  );
+}
+
+// export async function getServerSideProps(context) {
+//   const req = context.req;
+//   const res = context.res;
+//   return {
+//     props: {
+//       meetup: DUMMY_LIST,
+//     },
+//   };
+// }
+
+export async function getStaticProps() {
+  const client = await MongoClient.connect(
+    "mongodb+srv://test:test@cluster0.kh5sre0.mongodb.net/?retryWrites=true&w=majority"
+  );
+  const db = client.db();
+  const meetupCollections = db.collection("meetup");
+  const data = await meetupCollections.find().toArray();
+
+  return {
+    props: {
+      meetup: data.map((meetup) => {
+        return {
+          id: meetup._id.toString(),
+          title: meetup.title,
+          address: meetup.address,
+          image: meetup.image,
+          description: meetup.description,
+        };
+      }),
+    },
+    revalidate: 10,
+  };
 }
 
 export default Homepage;
