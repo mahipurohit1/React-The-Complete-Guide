@@ -1,5 +1,5 @@
-import { Fragment, useState, useEffect, Component } from "react";
-
+import { Fragment, Component } from "react";
+// import { useState, useEffect } from "react";
 import Users from "./Users";
 import Classes from "./UserFinder.module.css";
 import ErrorBoundary from "./ErrorBoundary";
